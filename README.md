@@ -25,3 +25,5 @@
 - intellisense css (사용된 class는 추천리스트에서 없앤다)
 - css peek (html에서 css 정의 보여준다. cmd + click class)
 - polacode(코드를 이미지로 뽑아낸다.)
+
+<img width="400" alt="스크린샷 2023-03-19 오전 5 46 55" src="https://user-images.githubusercontent.com/51349774/226138689-ad8a969e-49e5-4220-b47f-42423809dedc.png">
