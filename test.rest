@@ -1,0 +1,22 @@
+GET https://jsonplaceholder.typicode.com/posts
+
+###
+
+POST https://jsonplaceholder.typicode.com/posts
+Content-Type: application/json
+
+{
+    "userId":100,
+    "title":"title",
+    "body":"body"
+}
+
+###
+PUT https://jsonplaceholder.typicode.com/posts/5
+Content-Type: application/json
+
+{
+    "userId":100,
+    "title":"title2",
+    "body":"body2"
+}
