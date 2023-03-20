@@ -17,7 +17,7 @@ module.exports = {
   },
   plugins: ['react', 'prettier'],
   rules: {
-    quotes: ['single', 'error'],
+    quotes: '2',
     'no-unused-vars': 'warn',
     'prettier/prettier': 'error',
     'no-console': 'off',
