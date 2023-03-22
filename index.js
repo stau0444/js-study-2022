@@ -17,12 +17,29 @@
 //   */
 // }
 
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('document is ready');
-  for (let i = 0; i < 5; i = i + 1) {
-    console.log('🚀 ~ i:', i);
-    document.getElementById(`span${i + 1}`).addEventListener('click', () => {
-      console.log(i + 1);
-    });
-  }
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//   console.log('document is ready');
+//   for (let i = 0; i < 5; i = i + 1) {
+//     console.log('🚀 ~ i:', i);
+//     document.getElementById(`span${i + 1}`).addEventListener('click', () => {
+//       console.log(i + 1);
+//     });
+//   }
+// });
+
+const a = [
+  { name: 'ugo', age: 30 },
+  { name: 'hwang', age: 40 },
+  { name: 'kang', age: 4 },
+];
+
+class UArray extends Array {}
+const uarray = new UArray();
+
+UArray.prototype.findByName = (arr) => {
+  return arr.find((q) => q.name === 'ugo');
+};
+
+const name = uarray.findByName(a);
+
+console.log(name);
