@@ -27,19 +27,37 @@
 //   }
 // });
 
-const a = [
-  { name: 'ugo', age: 30 },
-  { name: 'hwang', age: 40 },
-  { name: 'kang', age: 4 },
-];
+// const a = [
+//   { name: 'ugo', age: 30 },
+//   { name: 'hwang', age: 40 },
+//   { name: 'kang', age: 4 },
+// ];
 
-class UArray extends Array {}
-const uarray = new UArray();
+// class UArray extends Array {}
+// const uarray = new UArray();
 
-UArray.prototype.findByName = (arr) => {
-  return arr.find((q) => q.name === 'ugo');
-};
+// UArray.prototype.findByName = (arr) => {
+//   return arr.find((q) => q.name === 'ugo');
+// };
 
-const name = uarray.findByName(a);
+// const name = uarray.findByName(a);
 
-console.log(name);
+// console.log(name);
+
+// uarray.
+
+class A {
+  name;
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+const a = new A('ugo');
+
+function f1(x, y) {
+  console.log(this.name, x, y);
+}
+
+f1(1, 2);
+// f1.apply(a, [1, 2]);
