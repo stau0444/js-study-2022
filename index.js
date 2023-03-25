@@ -59,5 +59,9 @@ function f1(x, y) {
   console.log(this.name, x, y);
 }
 
-f1(1, 2);
+// f1(1, 2);
 // f1.apply(a, [1, 2]);
+
+f1.bind(a);
+
+f1(1, 3);
