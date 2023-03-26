@@ -24,6 +24,7 @@ youtube 시니어코딩님의 javascript 강의를 요약한 내용입니다.
   - [1.함수란?](#1함수란?)
   - [2.인터프리터 언어 특징](#2인터프리터-언어-특징)
   - [3.실행 컨텍스트](#3실행-컨텍스트)
+  - [4.closure](#4closure)
 ## 편리한 vscode extension
 
 - gitlens (git 관리 툴)
@@ -293,7 +294,7 @@ setTimeout(function(){
 name = 'ugo'
 
 setTimeout(()=>{
-              console.log(this.name);  // 여기서 this는 바로위 name을 의미한다 
+              console.log(this.name);  // 여기서 this는 바로위 name을 의미한다  
             }, 1000)
 
 
@@ -357,10 +358,19 @@ new f2() //constructor()가 호출된다
 
 
 ---
-## 3.실행 컨텍스트
+## 3.실행 컨텍스트(execution context)
 - 자바스크립트에서 실행 가능한 코드는 전역 , 함수 , eval, module 있다.
 - 위의 네가지 실행 가능한 코드는 각자의 스코프를 갖는다.
 - 자바스크립트 엔진은 코드 평가를 거친후에 코드를 실행한다.평가 과정에서 실행 컨텍스트를 잡는다.
+- 실행 컨텍스트는 실행되는 실행 코드마다 갖게되는 고유의 영역이며 컨텍스트가 call stack에 쌓여서 lifo(last in first out) 방식으로 실행된다.
+- 코드가 평가될때 스코프 단위로 실행 컨텍스트가 생성된다. 가장 먼저 생성되는 것은 전역 실행 컨텍스트이다.
+- 실행 컨텍스트 안에는 lexical environment라는 영역이 생성된다. 
+- lexical environment에는 실행 컨텍스트에서 사용될 모든 데이터 저장될 environment record와
+- 외부 참조 값이 저장될 outer lexical environment reference가 생긴다.(참조값을 통해 외부에 접근하여 데이터를 찾아온다.)
+- lexical environment는 Object Environment record , Declarative Environment Record(ES6이후로 생김)로 나뉜다
+- Declarative Environment Record는 var const let등으로 선언된 변수들에 대한 데이터가 저장된다.
+- 환경 레코드는 중첩된 참조를 갖는다 , 이러한 방식을 렉시컬 스코프라하며 중첩된 참조를 따라 값을 참조하는 방식을 스코프 체이닝이라한다. 
+- 실행컨텍스트의 lexical environment가 외부에서 참조되고 있다면 실행컨텍스트가 call stack에서 제거되도  lexical environment는 남아있는다.
 ```js
 var g1 = 1;
 const c1 = 2;
@@ -380,3 +390,72 @@ gfn(100)
 
 
 ---
+
+## 4.closure
+- 하위 스코프가 상위스코프에는 접근할 수 있지만  반대는 불가능하다.
+- 중첩함수에서 자식함수가 부모함수의 실행이 끝나 콜스텍에서 제거됬더라도 부모함수의 변수에 접근할 수 있는 것을 클로저라고 한다.
+- 클로저가 가능한 이유는 함수 실행이 끝나면 실행 컨텍스트가 사라지지만 만약 실행컨텍스트의 environment recode에 있는 데이터가
+- 다른 컨텍스트로부터 참조되고 있다면(link 되어있다면) 스택영역의 실행 컨텍스트는 사라지지만 힙 영역에 environment recode는 GC의 대상이 되지않고 살아남기 때문에 접근이 가능하다. 
+- 이때 중요한점은 실행 컨텍스트에 대한 environment recode는 또 다른 중첩 함수에 의해 참조될수 있기떄문에(만약 또 중첩함수가 있다면 해당 중첩함수가 실행되기전까지는 평가하지않기 떄문에 함수 안에 정의된 코드를 알 수 없다.) environment recode를 통쨰로 살려 놓는다.
+
+```js
+
+//closure 예시
+
+function a1(){
+  const b = 10;
+  function a2(){
+    console.log(b);
+  }
+  return a2;
+}
+
+// a2()가 리턴된다.
+const v1 = a1();   
+v1(); // 10이 출력된다.
+
+```
+
+## 5. class
+- js에서는 prototype을 통해 클래스가 구현되며 모든 클래서는 최상위 클래스인 Object 클래스의 프로토타입을 상속 받는다 이때 template와 static 변수 함수 , 생성자 함수등 이 정의되는 function prototype ,new 키워드를 통해 생성되는 instance prototype이 각각 생성된다. 
+- instance prototype은 new를 통해 생성될때  function prototype에 정의된 변수 , 함수를 가져와 생성된다. 
+- 자바스크립트에서 class는 표현식만 다르고 결국은 모두 function으로 구현된다.
+- 멤버변수는 따로 선언하지 않고 constructor안에서 this.변수로 선언한다.
+- 정적 변수혹은 메서드들은 static이라는 키워드를 사용해 정의한다. static 변수 함수는 모든 인스턴스에서 공유되어 사용된다.
+- getter setter private method를 구현할 수 있다.
+
+```js
+
+class Dog extends Animal {
+  #sound = 'walwal'; //#을 붙히면 private 변수가 된다.
+  constructor(nm, da, col) {
+    super(nm);
+    this.dogAge = da;
+    this.color = col;
+    this.wal = function wal() {
+      console.log(this.#sound);
+    };
+  }
+  //getter 정의
+  get sound() {
+    return this.#sound;
+  }
+  //setter 정의
+  set sound(sound) {
+    this.#sound = sound;
+  }
+}
+const a = new Animal('human');
+const b = new Animal('monkey');
+const d = new Dog('jindo', 10, 'brown');
+
+Dog.info();
+console.log(d.dogAge);
+console.log(d.color);
+d.sound = 'wackwack'; //setter 호출
+const dogSound = d.sound; //getter호출
+console.log(dogSound); //wackwack
+```
+
+<br/>
+<img src="./class.png" width="80%"/>
