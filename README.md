@@ -458,4 +458,4 @@ console.log(dogSound); //wackwack
 ```
 
 <br/>
-<img src="./class.png" width="80%"/>
+<img src="./class.png" width="400px" height="450px"/>
