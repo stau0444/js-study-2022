@@ -151,17 +151,33 @@
 // console.log(dogSound); //wackwack
 // console.log(j.sound);
 
-const a = 'abc,def';
+// const a = 'abc,def';
 
-const [b, c] = a.split(',');
+// const [b, c] = a.split(',');
 
-console.log(b);
-console.log(c);
+// console.log(b);
+// console.log(c);
 
-function aq() {
-  return [10, 20];
-}
+// function aq() {
+//   return [10, 20];
+// }
 
-const [x, y] = aq();
-console.log(x);
-console.log(y);
+// const [x, y] = aq();
+// console.log(x);
+// console.log(y);
+
+// const a = [1, 2, 3];
+// const b = a.splice(1);
+// console.log(b);
+
+// const a = [1, 'f', [1, 2]];
+// console.log(a[0]);
+// console.log(a[1]);
+// console.log(a[2]);
+
+const a = [1, 2, 3];
+const c = new Array(1, 2, 3); //[1,2,3]
+const b = new Array(1); //[1 empty items]
+a.length = 4; //[ 1, 2, 3, <1 empty item> ]
+
+console.log(a);
