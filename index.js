@@ -181,3 +181,4 @@ const b = new Array(1); //[1 empty items]
 a.length = 4; //[ 1, 2, 3, <1 empty item> ]
 
 console.log(a);
+//
