@@ -28,6 +28,8 @@ youtube 시니어코딩님의 javascript 강의를 요약한 내용입니다.
 
 - 배열
   -[1.자바스크립트에서 Array](#1자바스크립트에서-Array)
+
+- Date , Number, Math
 ## 편리한 vscode extension
 
 - gitlens (git 관리 툴)
@@ -477,4 +479,24 @@ console.log(dogSound); //wackwack
 - 반면에 자바스크립트와 같은 인터프리팅언어에서 배열은 hash 테이블 구조로  만들어지기 떄문에 한번정해진 배열은 중간에 값이 삭제되면 값만 삭제되고 공간은 남아있기떄문에 배열의 길이가 줄어들거나 하지 않아 드문드문한 형태로 남는데 이와같은 배열을 spars 배열이라고 한다. 
 - 스펙상으로 자바스크립트에서 array의 길이는 2의 32승-2(맨처음,맨끝을 뺌)까지 가능하다.
 
-## 2.Array 생성
+
+---
+
+## Number 와 Math
+## String과 정규식
+
+
+
+---
+## Symbol
+- es6에서 추가된 데이터 타입이다. 
+- enum , iterator 역할을 한다.
+- global symbol registry
+```js
+ const Blood_TYPE = {
+  A:Symbol(),
+  B:Symbol(),
+  O:Symbol(),
+  AB:Symbol()
+ }
+```

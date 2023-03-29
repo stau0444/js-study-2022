@@ -1,6 +1,8 @@
 // const s = 'abc';
 // let q = `s is ${s}`;
 
+const moment = require('moment');
+
 // function hello(str) {}
 // const a = 'asd';
 // console.log('🚀 ~ a:', a);
@@ -175,10 +177,112 @@
 // console.log(a[1]);
 // console.log(a[2]);
 
-const a = [1, 2, 3];
-const c = new Array(1, 2, 3); //[1,2,3]
-const b = new Array(1); //[1 empty items]
-a.length = 4; //[ 1, 2, 3, <1 empty item> ]
+// const a = [1, 2, 3];
+// const c = new Array(1, 2, 3); //[1,2,3]
+// const b = new Array(1); //[1 empty items]
+// a.length = 4; //[ 1, 2, 3, <1 empty item> ]
 
-console.log(a);
-//
+// console.log(a);
+// //
+
+// const d = new Date();
+// console.log(d);
+// const dh = d.getHours();
+// console.log('🚀 ~ dh:', dh);
+// const dm = d.getMinutes();
+// console.log('🚀 ~ dm:', dm);
+// const ds = d.getSeconds();
+// console.log('🚀 ~ ds:', ds);
+// let dd = d.getDay();
+// console.log('🚀 ~ dd:', dd);
+// const dms = d.getMilliseconds();
+// console.log('🚀 ~ dms:', dms);
+// dd = 0;
+// if (!dd % 6) {
+//   console.log(d.toLocaleString());
+//   console.log('weekend');
+// } else {
+//   console.log('not weekend');
+// }
+
+// const ls = d.toLocaleString('ko-KR');
+// console.log('🚀 ~ ls:', ls);
+
+// m = moment();
+// const dddd = m.format('dddd');
+// const addDay = m.add(2, 'day').format('dddd');
+// console.log('🚀 ~ addDay:', addDay);
+// console.log('🚀 ~ dddd:', dddd);
+
+// const str = `const str = 'qwe Asd 12 asd';
+// const phoneNum = '010-9115-0444';
+// const phoneRe = new RegExp(/\d{2,3}-\d{4}-\d{4}/);
+// console.log('phoneNum=', phoneRe.test(phoneNum));
+// const email = 'stau04@@gmail.com';
+// const emailRe = new RegExp(/^[0-9A-Za-z]+@.[-\w\.]/);
+// console.log('emailRe', emailRe.test(email));
+// const a = str.match(/\D{3,3}\s/gi);
+// const rpl = str.replace(/asd/gi, '');
+// console.log('🚀 ~ rpl:', rpl);
+// console.log(a);`;
+
+// const user = 'userName groupName';
+// const userSplit = str.split(' ');
+// console.log('🚀 ~ userSplit:', userSplit);
+// userSplit.forEach((us) => {
+//   let snake = us.replace(/.[A-Z]/m, (m) => `${m[0]}_${m[1].toLowerCase()}`);
+//   console.log('🚀 ~ snake:', snake);
+// });
+
+// const sb = Symbol();
+// console.log('🚀 ~ sb:', sb);
+
+const Blood_TYPE = Object.freeze({
+  A: Symbol.for('A'),
+  O: Symbol.for('O'),
+  B: Symbol.for('B'),
+  AB: Symbol.for('AB'),
+});
+const keys = Object.keys(Blood_TYPE);
+console.log('🚀 ~ keys:', keys);
+const isF = Object.isFrozen(Blood_TYPE);
+console.log('🚀 ~ isF:', isF);
+Blood_TYPE.A = Symbol();
+
+console.log('🚀 ~ b:', Blood_TYPE.A);
+const arr = new Array();
+const set = new Set();
+const map = new Map();
+const obj = {
+  [Symbol.iterator]() {
+    return {
+      next() {
+        const value = 3;
+        return { value };
+      },
+    };
+  },
+};
+const isIterable1 = typeof arr[Symbol.iterator] === 'function';
+console.log('🚀 ~ isIterable1:', isIterable1);
+const isIterable2 = typeof set[Symbol.iterator] === 'function';
+console.log('🚀 ~ isIterable2:', isIterable2);
+const isIterable3 = typeof map[Symbol.iterator] === 'function';
+console.log('🚀 ~ isIterable3:', isIterable3);
+const isIterable4 = typeof obj[Symbol.iterator] === 'function';
+console.log('🚀 ~ isIterable4:', isIterable4);
+it = obj[Symbol.iterator]();
+console.log(it.next());
+
+const arr2 = new Array(1, 2, 3);
+
+const sum = (args) => {
+  let sum = 0;
+  [...args].reduce((x, y) => {
+    sum = x + y;
+  });
+  return sum;
+};
+
+console.log('arr2', sum(arr2));
+console.log('...arr2', sum([...arr2]));
