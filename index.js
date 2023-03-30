@@ -1,7 +1,7 @@
 // const s = 'abc';
 // let q = `s is ${s}`;
 
-const moment = require('moment');
+// const moment = require('moment');
 
 // function hello(str) {}
 // const a = 'asd';
@@ -237,52 +237,78 @@ const moment = require('moment');
 // const sb = Symbol();
 // console.log('🚀 ~ sb:', sb);
 
-const Blood_TYPE = Object.freeze({
-  A: Symbol.for('A'),
-  O: Symbol.for('O'),
-  B: Symbol.for('B'),
-  AB: Symbol.for('AB'),
+// const Blood_TYPE = Object.freeze({
+//   A: Symbol.for('A'),
+//   O: Symbol.for('O'),
+//   B: Symbol.for('B'),
+//   AB: Symbol.for('AB'),
+// });
+// const keys = Object.keys(Blood_TYPE);
+// console.log('🚀 ~ keys:', keys);
+// const isF = Object.isFrozen(Blood_TYPE);
+// console.log('🚀 ~ isF:', isF);
+// Blood_TYPE.A = Symbol();
+
+// console.log('🚀 ~ b:', Blood_TYPE.A);
+// const arr = new Array();
+// const set = new Set();
+// const map = new Map();
+// const obj = {
+//   [Symbol.iterator]() {
+//     return {
+//       next() {
+//         const value = 3;
+//         return { value };
+//       },
+//     };
+//   },
+// };
+// const isIterable1 = typeof arr[Symbol.iterator] === 'function';
+// console.log('🚀 ~ isIterable1:', isIterable1);
+// const isIterable2 = typeof set[Symbol.iterator] === 'function';
+// console.log('🚀 ~ isIterable2:', isIterable2);
+// const isIterable3 = typeof map[Symbol.iterator] === 'function';
+// console.log('🚀 ~ isIterable3:', isIterable3);
+// const isIterable4 = typeof obj[Symbol.iterator] === 'function';
+// console.log('🚀 ~ isIterable4:', isIterable4);
+// it = obj[Symbol.iterator]();
+// console.log(it.next());
+
+// const arr2 = new Array(1, 2, 3);
+
+// const sum = (args) => {
+//   let sum = 0;
+//   [...args].reduce((x, y) => {
+//     sum = x + y;
+//   });
+//   return sum;
+// };
+
+// console.log('arr2', sum(arr2));
+// console.log('...arr2', sum([...arr2]));
+// const u = { id: 1, name: 'ugo' };
+// const uu = { id: 11, name: 'ugo2' };
+// const uuu = new Object({ id: 1, name: 'ugo' });
+// const b = { ...u, addr: 'seoul' };
+// const bb = { ...b, ...uu };
+// console.log('🚀 ~ bb:', bb);
+// console.log('🚀 ~ b:', b);
+// // const arr = [...uuu];
+// console.log('🚀 ~ arr:', arr);
+
+// const a = [1, 2, 3];
+// const aa = [...a];
+// console.log('🚀 ~ aa:', aa);
+// const b = { a: 1, b: [1, 2, 3] };
+// const bb = { ...b, b: [...b.b] };
+// b.b[0] = 4;
+// console.log('🚀 ~ bb:', bb);
+
+const $ele = document.getElementById('qwe');
+console.log('$ele', $ele);
+console.log(Node.ATTRIBUTE_NODE);
+console.log(Node.DOCUMENT_NODE.toString());
+document.querySelector('.btn').addEventListener('click', (e) => {
+  e.stopPropagation();
+  console.log('btn click');
 });
-const keys = Object.keys(Blood_TYPE);
-console.log('🚀 ~ keys:', keys);
-const isF = Object.isFrozen(Blood_TYPE);
-console.log('🚀 ~ isF:', isF);
-Blood_TYPE.A = Symbol();
-
-console.log('🚀 ~ b:', Blood_TYPE.A);
-const arr = new Array();
-const set = new Set();
-const map = new Map();
-const obj = {
-  [Symbol.iterator]() {
-    return {
-      next() {
-        const value = 3;
-        return { value };
-      },
-    };
-  },
-};
-const isIterable1 = typeof arr[Symbol.iterator] === 'function';
-console.log('🚀 ~ isIterable1:', isIterable1);
-const isIterable2 = typeof set[Symbol.iterator] === 'function';
-console.log('🚀 ~ isIterable2:', isIterable2);
-const isIterable3 = typeof map[Symbol.iterator] === 'function';
-console.log('🚀 ~ isIterable3:', isIterable3);
-const isIterable4 = typeof obj[Symbol.iterator] === 'function';
-console.log('🚀 ~ isIterable4:', isIterable4);
-it = obj[Symbol.iterator]();
-console.log(it.next());
-
-const arr2 = new Array(1, 2, 3);
-
-const sum = (args) => {
-  let sum = 0;
-  [...args].reduce((x, y) => {
-    sum = x + y;
-  });
-  return sum;
-};
-
-console.log('arr2', sum(arr2));
-console.log('...arr2', sum([...arr2]));

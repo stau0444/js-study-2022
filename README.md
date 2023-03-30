@@ -487,16 +487,50 @@ console.log(dogSound); //wackwack
 
 
 
+
 ---
 ## Symbol
-- es6에서 추가된 데이터 타입이다. 
-- enum , iterator 역할을 한다.
-- global symbol registry
-```js
- const Blood_TYPE = {
-  A:Symbol(),
-  B:Symbol(),
-  O:Symbol(),
-  AB:Symbol()
- }
+
+
+---
+
+
+
+## 브라우저 렌더링과정
+1. 주소창에 url을 치면 서버 index 파일을 응답해준다.
+2. index.html에 포함된 css js img 파일을 요청한다 .
+3. css를 바탕으로 dom을 그리고 , js파일이 실행된다
+
+
+
+- http 버전에 따라 2번과정의 차이점이 있다.
+- http 초기버전의 경우 css js img를 각각 받아왔다. 
+- 하지만 커넥션을 다시 맺는 과정은 꾀나 무거운 과정이기 때문에 응답속도가 많이 느려진다.
+- 이를 해결 하기위해 keep alive라는 속성을 사용해 일정시간동안 커넥션을 유지하는 방식으로 커넥션을 다시 맺는 과정을 줄였지만 서버에서 해당 커넥션을 너무 오래 유지 하게되어 커넥션 순환이 이뤄지지 않아 동시접속자 수가 줄어드는 단점이 있다.
+- 위와 같은 단점을 해결하기위해 브라우저 쪽에서 요청시 여러개의 커넥션을 병렬로 연결하여 한반에 여러개 파일을 병렬로 가져오는 방식을 사용하기도 했다(keep alive보다 서버 부담 낮음)
+- 시간이 갈수록 서버들의 성능이 좋아지며 http2.0 부터 keep alive 속성이 default로 true로 설정되고 css js img 파일들에 대한 요청도 병렬로 한번에 불러오는 방식으로 바뀌었다.
+- defer 키워드는 script 파일이 DOM이 그려진 후에 읽어지도록 한다.
+<!-- - 요즘은 <script> <link>와 같이 파일을 불러오는 테그들을 바디 맨아래에 적어놓는다.
+- dom을 그린후에 파일을 읽어오기 header에 위치하는 것보다 체감상 빠르다 -->
+
+
+## DOM
+
+### DOM 이벤트
+- 이벤트 발생시 가장 바깥의 root로부터 이벤트 타겟인 노드까지 이벤트가 내려온다.
+- 부모태그와 자식태그의 이벤트가 겹칠시 이벤트는 부모태그가 먼저 받지만 실행은 타겟이 되는 태그가 먼저 된다.
+- 이벤트리스너에서 e.stopPropagation()를 호출하면 부모 노드에 이벤트를 실행하지 않도록한다.
+```html
+<body>
+  <div
+    style="width: 200px; height: 200px; background-color: aqua"
+    onclick="console.log('div click')"
+  >
+    <button onclick="console.log('btn click')">asd</button>
+  </div>
+  <script src="./index.js"></script>
+</body>
+
+//> btn click
+//> div click
 ```
