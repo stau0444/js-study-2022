@@ -304,11 +304,42 @@
 // b.b[0] = 4;
 // console.log('🚀 ~ bb:', bb);
 
-const $ele = document.getElementById('qwe');
-console.log('$ele', $ele);
-console.log(Node.ATTRIBUTE_NODE);
-console.log(Node.DOCUMENT_NODE.toString());
-document.querySelector('.btn').addEventListener('click', (e) => {
-  e.stopPropagation();
-  console.log('btn click');
+// const $ele = document.getElementById('qwe');
+// console.log('$ele', $ele);
+// console.log(Node.ATTRIBUTE_NODE);
+// console.log(Node.DOCUMENT_NODE.toString());
+
+const debounce = (cb, delay) => {
+  let timer;
+  return (e) => {
+    if (timer) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(cb, delay, e);
+    console.log(timer);
+  };
+};
+
+function asd() {
+  const a = 'asd';
+  return function () {
+    console.log(a);
+  };
+}
+
+const saveChange = debounce(() => {
+  console.log('db');
+}, 500);
+// function debounce(func, timeout = 300) {
+//   let timer;
+//   return (...args) => {
+//     clearTimeout(timer);
+//     timer = setTimeout(() => {
+//       func.apply(this, args);
+//     }, timeout);
+//   };
+// }
+
+document.querySelector('.inp').addEventListener('keydown', (e) => {
+  saveChange();
 });

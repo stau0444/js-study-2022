@@ -524,9 +524,9 @@ console.log(dogSound); //wackwack
 <body>
   <div
     style="width: 200px; height: 200px; background-color: aqua"
-    onclick="console.log('div click')"
   >
-    <button onclick="console.log('btn click')">asd</button>
+    <button>asd</button>
+
   </div>
   <script src="./index.js"></script>
 </body>
