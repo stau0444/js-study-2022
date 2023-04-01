@@ -534,3 +534,10 @@ console.log(dogSound); //wackwack
 //> btn click
 //> div click
 ```
+
+
+---
+
+## 비동기
+
+- 자바스크립트는 싱글스레드로 동작한다.****
