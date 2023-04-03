@@ -309,27 +309,27 @@
 // console.log(Node.ATTRIBUTE_NODE);
 // console.log(Node.DOCUMENT_NODE.toString());
 
-const debounce = (cb, delay) => {
-  let timer;
-  return (e) => {
-    if (timer) {
-      clearTimeout(timer);
-    }
-    timer = setTimeout(cb, delay, e);
-    console.log(timer);
-  };
-};
+// const debounce = (cb, delay) => {
+//   let timer;
+//   return (e) => {
+//     if (timer) {
+//       clearTimeout(timer);
+//     }
+//     timer = setTimeout(cb, delay, e);
+//     console.log(timer);
+//   };
+// };
 
-function asd() {
-  const a = 'asd';
-  return function () {
-    console.log(a);
-  };
-}
+// function asd() {
+//   const a = 'asd';
+//   return function () {
+//     console.log(a);
+//   };
+// }
 
-const saveChange = debounce(() => {
-  console.log('db');
-}, 500);
+// const saveChange = debounce(() => {
+//   console.log('db');
+// }, 500);
 // function debounce(func, timeout = 300) {
 //   let timer;
 //   return (...args) => {
@@ -340,6 +340,15 @@ const saveChange = debounce(() => {
 //   };
 // }
 
-document.querySelector('.inp').addEventListener('keydown', (e) => {
-  saveChange();
+// document.querySelector('.inp').addEventListener('keydown', (e) => {
+//   saveChange();
+// });
+
+const f1 = () => 4;
+const f2 = () => 5;
+const f3 = () => 6;
+
+const a = Promise.allSettled([f1(), f2(), f3()]).then((r) => {
+  console.log(r);
 });
+a.then();
