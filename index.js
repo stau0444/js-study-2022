@@ -344,11 +344,107 @@
 //   saveChange();
 // });
 
-const f1 = () => 4;
-const f2 = () => 5;
-const f3 = () => 6;
+// const f1 = () => 4;
+// const f2 = () => 5;
+// const f3 = () => 6;
 
-const a = Promise.allSettled([f1(), f2(), f3()]).then((r) => {
-  console.log(r);
-});
-a.then();
+// const a = Promise.allSettled([f1(), f2(), f3()]).then((r) => {
+//   console.log(r);
+// });
+// a.then();
+
+// const p = new Promise((resolve, reject) => {
+//   const a = 4;
+//   async function f() {
+//     const fr = f();
+//     return 5;
+//   }
+//   if (a === 4) {
+
+//     return resolve(fr + 4);
+//   } else {
+//     return reject(2);
+//   }
+// });
+
+// const r1 = p
+//   .then((a) => console.log(a))
+//   .catch((a) => {
+//     console.log(a);
+//   })
+//   .finally(console.log('fin'));
+// const r2 = r1 + 5;
+// console.log('🚀 ~ r2:', r2);
+
+// function* f() {
+//   yield 1;
+//   yield 2;
+// }
+
+// let gen = f().next();
+// let gen2 = f().next();
+
+// console.log('🚀 ~ gen:', gen);
+// console.log('🚀 ~ gen2:', gen2);
+
+// const f1 = () => {
+//   let i;
+//   for (i = 0; i < 100; i++) {
+//     i += i;
+//   }
+//   return i;
+// };
+// const f2 = () => {
+//   const ff = f1();
+//   let i;
+//   for (i = 0; i < 100; i++) {
+//     i -= i;
+//   }
+//   return ff + i;
+// };
+// const f3 = () => {
+//   const ff = f2();
+//   return ff + 6;
+// };
+
+// const c = f3();
+// console.log('🚀 ~ c:', c);
+
+const checkSameWord = (ans) => lastWordsArr.find((w) => w === ans);
+const isMatch = (ans, ques) => {
+  return ans.startsWith(ques[ques.length - 1]) && ans.startsWith !== ''
+    ? true
+    : false;
+};
+
+const players = ['p1', 'p2', 'p3'];
+let count = 0;
+let turn = players[count];
+let ans = '단어입력';
+let ques = '';
+
+const lastWordsArr = [];
+
+while (true) {
+  ans = prompt(turn + ':' + ques);
+  if (checkSameWord(ans)) {
+    alert(`${turn}이 말한 ${ans}는 이미 사용된 단어입니다.${turn} loose`);
+    break;
+  }
+  lastWordsArr.push(ans);
+  if (count !== 0) {
+    if (isMatch(ans, ques)) {
+      console.log('ok');
+    } else {
+      alert(`${ans}는 규칙에 맞지 않습니다. ${turn} loose`);
+      console.log('fail');
+      break;
+    }
+  }
+  ques = ans;
+  count++;
+  if (count === 3) {
+    count = 0;
+  }
+  turn = players[count];
+}
